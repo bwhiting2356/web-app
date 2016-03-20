@@ -1,0 +1,28 @@
+/**** SIDE NAV STYLES ****/
+
+#side-nav {
+    position: absolute;
+    width: $spacing-nav-width;
+    // height: 100%;
+    display: inline-block;
+    background: $color-nav-background;
+
+    img {
+        height: $spacing-nav-iconsize;
+        width: $spacing-nav-iconsize;
+        padding: ($spacing-default * 0.5) $spacing-default;
+        margin: ($spacing-default * 0.5) 0 0 0;
+        border: $spacing-border-thick solid $color-nav-background;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .current {
+        border-left-color: $color-nav-current;
+        opacity: 1;
+    }
+}

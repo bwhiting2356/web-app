@@ -1,0 +1,32 @@
+/**** MIXINS ****/
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+@mixin transition-opacity {
+    transition: opacity 0.3s;
+}
+
+@mixin button-backgrounds($bg) {
+    background: $bg;
+    transition: background 0.3s;
+
+    &:hover {
+        background: lighten($bg, 15%)
+    }
+
+    &:active {
+        background: darken($bg, 15%)
+    }
+}
+
+@mixin calc_social_width($cols) {
+    $outer-margins: $spacing-default * 2;
+    $inner-margins: $spacing-larger * ($cols - 1);
+    $total-extra: $outer-margins + $inner-margins + $spacing-nav-width;
+    $random-gutters: $spacing-random-gutter * $cols;
+    width: calc(((100% - #{$total-extra}) / #{$cols}) - #{$random-gutters});
+}

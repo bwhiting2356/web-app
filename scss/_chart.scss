@@ -1,0 +1,33 @@
+/**** CHART STYLES ****/
+
+canvas {
+    margin-top: $spacing-default;
+    display: block;
+    width: 100%;
+}
+
+#scale {
+    display: inline;
+    float: right;
+    margin-right: - ($spacing-default / 2);
+
+    div {
+        display: inline;
+        margin-left: $spacing-default / 4;
+        padding: ($spacing-default / 3) ($spacing-default / 2);
+        border-radius: $spacing-default;
+
+        a {
+            text-decoration: none;
+            color: $color-main-text;
+        }
+    }
+
+    .selected {
+        background: $color-scale-selected;
+
+        a {
+            color: white;
+        }
+    }
+}

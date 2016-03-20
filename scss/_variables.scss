@@ -1,0 +1,48 @@
+/**** VARIABLES ****/
+
+
+
+/**** COLORS ****/
+
+$color-header-text: white;
+$color-header-background: #7479BD;
+$color-header-line: #5F65BC;
+
+$color-nav-background: #4D4E71;
+$color-nav-current: #88DA85;
+
+$color-topcontainer-bg: #FBFBFB;
+$color-main-border: #DBDBDB;
+
+$color-main-text: #676666;
+$color-scale-selected: #83C991;
+
+$color-button-cancel: lighten($color-main-text, 25%);
+
+/*** BORDERS ***/
+
+$border-main: 1px solid $color-main-border;
+
+/**** SPACING ****/
+
+$spacing-default: 30px;
+$spacing-smaller: $spacing-default * (2/3);
+$spacing-larger: $spacing-default * 1.25;
+$spacing-half: $spacing-default / 2;
+$spacing-border-thin: 1px;
+$spacing-border-thick: 3px;
+$spacing-avatar: 35px;
+$spacing-random-gutter: 4px;
+
+$spacing-nav-iconsize: 40px;
+$spacing-nav-width: ($spacing-default * 2) + $spacing-nav-iconsize + ($spacing-border-thick * 2);
+
+$spacing-border-radius: 4px;
+
+/**** BREAKPOINTS ****/
+
+$breakpoint-tablet: 750px;
+$breakpoint-desktop: 950px;
+
+
+

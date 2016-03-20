@@ -1,0 +1,64 @@
+/**** MAIN SECTION STYLES ****/
+
+main {
+    margin-left: $spacing-nav-width;
+}
+
+#top-container {
+    display: flex;
+}
+
+#title  {
+    padding: $spacing-smaller $spacing-default ;
+    display: inline-block;
+    background: white;
+    color: $color-main-text;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+#search-container {
+    display: inline-block;
+    background: $color-topcontainer-bg;
+    border-left: $border-main;
+    border-bottom: $border-main;
+    float: right;  
+    flex-grow: 1;
+    position: relative;
+
+    input {
+        padding-right: $spacing-default;
+    }
+
+    &:before {
+        content: "\f002";
+        font-family: FontAwesome;
+        font-style: normal;
+        text-decoration: inherit;
+    /*--adjust as necessary--*/
+        color: $color-header-background;
+        font-size: 18px;
+        padding-right: 0.5em;
+        position: absolute;
+        top: 28px;
+        right: $spacing-default;
+    }
+}
+
+#top-search {
+    float: right;
+    width: 300px;
+    margin: $spacing-half $spacing-default;
+}
+
+#search-for-user {
+    width: 100%;
+    margin-top: $spacing-smaller;
+    box-sizing: border-box; 
+}
+
+#message-for-user {
+    @extend #search-for-user;
+    height: 120px;
+    resize: none;
+}
