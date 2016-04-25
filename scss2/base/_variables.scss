@@ -1,0 +1,40 @@
+/**** COLOR VARIABLES ****/
+
+$color-light-purple: #7479BD;
+$color-dark-purple: #4D4E71;
+$color-white: #FFFFFF;
+$color-blue: #5F65BC;
+$color-light-green: #88DA85;
+$color-dark-grey: #676666;
+$color-medium-grey: darken(#DBDBDB, 5%);
+$color-light-grey: #FBFBFB;
+
+/**** SPACING VARIABLES ****/
+
+$spacing-default: 25px;
+$spacing-half: $spacing-default / 2;
+$spacing-one-quarter: $spacing-default / 4;
+$spacing-one-third: $spacing-default / 3;
+$spacing-two-thirds: ($spacing-default  / 3) * 2;
+
+$spacing-border-thin: 1px;
+$spacing-border-thick: 3px;
+$spacing-border-radius: 4px;
+
+$spacing-nav-img: $spacing-default * 1.25;
+$spacing-nav-width: $spacing-nav-img + ($spacing-default * 2) + ($spacing-border-thick * 2);
+
+$spacing-header-height-normal: 80px;
+$spacing-header-height-wrap: 132px;
+
+$spacing-scale-width: 340px;
+$spacing-scale-height: 35px;
+
+/**** BREAKPOINTS ****/
+
+$breakpoint-1: 590px;
+$breakpoint-2: 660px;
+$breakpoint-3: 930px;
+
+$border-main: $spacing-border-thin solid $color-medium-grey;
+

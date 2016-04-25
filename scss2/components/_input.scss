@@ -1,0 +1,25 @@
+/**** INPUT STYLES ****/
+
+input {
+    padding: $spacing-half $spacing-one-third;
+    border: $border-main;
+    border-radius: 4px;
+    color: $color-dark-grey;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $color-medium-grey;
+      font-weight: 300;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $color-medium-grey;
+      font-weight: 300;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: $color-medium-grey;
+      font-weight: 300;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $color-medium-grey;
+      font-weight: 300;
+    }
+}

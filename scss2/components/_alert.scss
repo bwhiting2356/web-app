@@ -1,0 +1,47 @@
+.alert-item {
+    background: $color-light-purple;
+    padding: $spacing-half;
+    margin: $spacing-default;
+    border-radius: $spacing-border-radius;
+    color: $color-white;
+    position: relative;
+
+    .alert {
+        position: absolute;
+        top: $spacing-half;
+        left: $spacing-half;
+        font-weight: bold;
+
+        // top: $spacing-half  ;
+    }
+
+    .fa-times {
+        @include nice-hover;
+        position: absolute;
+        top: $spacing-half;
+        right: $spacing-half;
+        cursor: pointer;
+    }
+}
+
+.text {
+    display: inline-block;
+    font-weight: lighter;
+    margin-top: $spacing-default;
+
+    @include media-query($breakpoint-1) {
+        margin-top: 0;
+        margin-right: $spacing-default;
+        margin-left: $spacing-default * 2;
+    }
+}
+
+.message {
+    font-weight: lighter;
+}
+
+
+.highlight {
+    font-weight: bold;
+    padding-right: 10px;
+}

@@ -1,0 +1,40 @@
+.select-style {
+    position: relative;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box; 
+    border: $border-main;
+    border-radius: $spacing-border-radius;
+    overflow: hidden;
+
+    &:before {
+        content: "\f078";
+        pointer-events: none;
+        font-family: FontAwesome;
+        font-style: normal;
+        text-decoration: inherit;
+        color: $color-header-background;
+        font-size: 18px;
+        padding-right: 0.5em;
+        position: absolute;
+        top: 12px;
+        right: 0px;
+    }
+}
+
+.select-style select {
+    cursor: pointer;
+    color: darkgrey;
+    padding-left: 0;
+    margin-left: 10px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}

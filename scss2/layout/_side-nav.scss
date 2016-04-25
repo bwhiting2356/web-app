@@ -1,0 +1,44 @@
+/**** SIDE NAV STYLES ****/
+
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -$spacing-nav-width;
+    @include nice-nav-move(left);
+
+    &.show-nav {
+      left: 0;
+    }
+
+    @include media-query($breakpoint-3) {
+        padding-top: $spacing-header-height-normal + $spacing-half;
+        left: 0;
+    }
+    
+    z-index: 1;
+    padding: $spacing-half 0;
+    width: $spacing-nav-width;
+    height: 100vh;
+    background: $color-dark-purple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        height: $spacing-nav-img;
+        width: $spacing-nav-img;
+        padding: $spacing-half $spacing-default;
+        border: $spacing-border-thick solid $color-dark-purple;
+        opacity: .7;
+        &:hover {
+          opacity: 1;
+          transition: opacity .2s;
+        }
+
+        &.current {
+            border-left-color: $color-light-green;
+            opacity: 1;
+        }
+    }
+}
+

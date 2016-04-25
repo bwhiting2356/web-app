@@ -1,8 +1,15 @@
 /**** MAIN SECTION STYLES ****/
 
 main {
-    margin-left: $spacing-nav-width;
+    @include breakpoint-desktop {
+        margin-left: $spacing-nav-width;
+    }
 }
+
+body {
+    z-index: 0;
+}
+
 
 #top-container {
     display: flex;
@@ -32,10 +39,10 @@ main {
 
     &:before {
         content: "\f002";
+        pointer-events: none;
         font-family: FontAwesome;
         font-style: normal;
         text-decoration: inherit;
-    /*--adjust as necessary--*/
         color: $color-header-background;
         font-size: 18px;
         padding-right: 0.5em;
@@ -47,7 +54,7 @@ main {
 
 #top-search {
     float: right;
-    width: 300px;
+    width: 360px;
     margin: $spacing-half $spacing-default;
 }
 

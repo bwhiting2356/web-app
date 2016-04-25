@@ -1,0 +1,49 @@
+/**** NOTIFS DROPDOWN STYLES ****/
+
+.notifs-dropdown {
+    &:hover {
+        opacity: 1;
+    }
+    visibility: hidden;
+    position: absolute;
+    z-index: 10;
+    top: $spacing-header-height-wrap - $spacing-half;
+
+    @include media-query($breakpoint-1) {
+        top: $spacing-header-height-normal - $spacing-half;
+    }
+    right: $spacing-default + $spacing-half;    
+    
+    width: 300px;
+    background: $color-white;
+    border: 1px $color-dark-purple solid;
+    border-radius: $spacing-border-radius;
+
+    &.visible {
+        visibility: visible;
+    }
+}
+
+.notif-heading {
+        &:hover {
+        opacity: 1;
+    }
+    text-align: left;
+    background: $color-dark-purple;
+    width: 100%;
+    border-bottom: 1px $color-dark-purple solid;    
+
+    h3 {
+        margin: 0;
+        font-size: 1em; 
+        color: $color-white;
+        font-weight: normal;
+        padding: 5px;
+    }
+}
+
+.notif-item {
+    float: left;
+    padding: 5px;
+    color: $color-dark-grey;
+}

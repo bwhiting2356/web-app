@@ -60,33 +60,16 @@ canvas {
     z-index: 2;
     color: $color-main-text;
     transition: color .3s;
-    cursor: pointer;
 
     label {
         display: inline-block;
         width: calc(#{$spacing-scale-width} / 4);    
         margin: auto;
         text-align: center; 
+        cursor: pointer;
     }
 }
 
-@mixin toggle-transition($children) {
-    @for $i from 0 to $children {
-
-        $input: 1 + ($i * 2);
-        &:nth-child(#{$input}):checked ~ .floating-bg {
-            margin-left: calc((#{$spacing-scale-width} / 4) * #{$i});
-        }
-
-        &:nth-child(#{$input}):checked + .label-div{
-            color: white;
-        }
-    }
-}
-
-
-
-// 
 
 #switches {
     display: inline-block;
