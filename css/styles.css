@@ -640,7 +640,8 @@ h2 {
   align-items: center;
   flex-direction: row-reverse;
   width: 100%;
-  position: relative; }
+  position: relative;
+  margin-bottom: 25px; }
   @media (min-width: 660px) {
     .search-container {
       width: 480px;
