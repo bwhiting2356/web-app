@@ -130,7 +130,6 @@ function drawDoughnutChart(data) {
             }
         }
     });
-    console.log(myDoughnutChart);
 }
 
 var app = angular.module('yourApp', []);
@@ -168,38 +167,39 @@ app.controller('chartToggle', function($scope) {
     });
 });
 
-var $menu = $('.menu');
-var $side_nav = $('.side-nav');
-var $header = $('header');
-var $heading_container = $('.heading-container');
-var $x = $('.x');
-var $main = $('main');
+$(document).ready(function() {
+    var $menu = $('.menu');
+    var $side_nav = $('.side-nav');
+    var $header = $('header');
+    var $heading_container = $('.heading-container');
+    var $x = $('.x');
+    var $main = $('main');
 
-/* Toggle menu between hamburger and x */
+    /* Toggle menu between hamburger and x */
 
-$menu.click(function() {
-    console.log("hey");
-    $side_nav.toggleClass('show-nav');
-    $header.toggleClass('show-nav');
-    $menu.toggleClass('fa fa-times');
-    $menu.toggleClass('fa fa-bars');
-    $x.toggleClass('show-nav');
-    $heading_container.toggleClass('show-nav');
-    $main.toggleClass('show-nav');
-});
+    $menu.click(function() {
+        $side_nav.toggleClass('show-nav');
+        $header.toggleClass('show-nav');
+        $menu.toggleClass('fa fa-times');
+        $menu.toggleClass('fa fa-bars');
+        $x.toggleClass('show-nav');
+        $heading_container.toggleClass('show-nav');
+        $main.toggleClass('show-nav');
+    });
 
-/* Make notifs dropdown appear on click */
+    /* Make notifs dropdown appear on click */
 
-var $notifs_container = $('.notifs-container');
-var $notifs_dropdown = $('.notifs-dropdown');
-$notifs_container.click(function() {
-    $notifs_dropdown.toggleClass('visible');
-    $notifs_container.removeClass('new');
-});
+    var $notifs_container = $('.notifs-container');
+    var $notifs_dropdown = $('.notifs-dropdown');
+    $notifs_container.click(function() {
+        $notifs_dropdown.toggleClass('visible');
+        $notifs_container.removeClass('new');
+    });
 
-/* Hide alert div when x is clicked */
+    /* Hide alert div when x is clicked */
 
-var $alertx = $('.alertx');
-$alertx.click(function() {
-    $(this).parent().hide();
+    var $alertx = $('.alertx');
+    $alertx.click(function() {
+        $(this).parent().hide();
+    });
 });
