@@ -1,52 +1,18 @@
 /**** MIXINS ****/
 
-@mixin desktop {
-  @media (min-width: #{$breakpoint-desktop}) {
+@mixin media-query($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
     @content;
   }
 }
 
-@mixin transition-opacity {
-    transition: opacity 0.3s;
+@mixin nice-nav-move($property) {
+    transition: $property 0.2s ease-out;
 }
 
-@mixin button-backgrounds($bg) {
-    background: $bg;
-    transition: background 0.3s;
-
+@mixin nice-hover {
+    transition: opacity .2s;
     &:hover {
-        background: lighten($bg, 15%)
+        opacity: .7;
     }
-
-    &:active {
-        background: darken($bg, 15%)
-    }
-}
-
-@mixin calc_social_width($cols) {
-    $outer-margins: $spacing-default * 2;
-    $inner-margins: $spacing-larger * ($cols - 1);
-    $total-extra: $outer-margins + $inner-margins + $spacing-nav-width;
-    $random-gutters: $spacing-random-gutter * $cols;
-    width: calc(((100% - #{$total-extra}) / #{$cols}) - #{$random-gutters});
-}
-
-@mixin toggle-transition($children) {
-
-    &:checked + .label-div{
-        color: white;
-    }
-
-    @for $i from 0 to $children {
-        $input: 1 + ($i * 2);
-        &:nth-child(#{$input}):checked ~ .floating-bg {
-            margin-left: calc((#{$spacing-scale-width} / 4) * #{$i});
-        }
-    }
-}
-
-@mixin breakpoint-desktop {
-    @media screen and (min-width: #{$breakpoint-desktop}) {
-        @content;
-      }
 }

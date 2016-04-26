@@ -1,201 +1,205 @@
-var data = {
-    first_name: "Brendan",
-    last_name: "Whiting",
-    avatar_src: "http://lorempixel.com/45/45/",
-    alerts: ["Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor."],
-    social_stats: {"twitter": 10345, "facebook": 8739, "google_plus": 2530},
-    new_members: [
-        {"name": "Victoria Chambers",
-        "email": "victoria.chambers80@example.com",
-        "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/47/47/"},
-        {"name": "Dale Byrd",
-        "email": "dale.bird52@example.com",
-        "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/46/46/"},
-        {"name": "Dawn Wood",
-        "email": "dawn.wood16@example.com",
-        "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/48/48/"},
-        {"name": "Dan Oliver",
-        "email": "dan.oliver82@example.com",
-        "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/49/49/"},
-    ],
-    recent_activity: [
-        {"name": "Victoria Chambers",
-        "avatar_src": "http://lorempixel.com/47/47/",
-        "action": "commented on",
-        "target": "YourApp's SEO Tips",
-        "time": "4 hours ago"},
-        {"name": "Dale Byrd",
-        "action": "liked the post",
-        "target": "Facebook's Changes for 2016",
-        "avatar_src": "http://lorempixel.com/46/46/",
-        "time": "5 hours ago"},
-        {"name": "Dawn Wood",
-        "avatar_src": "http://lorempixel.com/48/48/",
-        "action": "commented on",
-        "target": "Facebook's Changes for 2016",
-        "time": "5 hours ago"},
-        {"name": "Dan Oliver",
-        "avatar_src": "http://lorempixel.com/49/49/",
-        "action": "posted",
-        "target": "YourApp's SEO Tips",
-        "time": "1 day ago"},
-    ],
-};
+var hourly_labels = ["9:00am", 
+                    "10:00am", 
+                    "11:00am", 
+                    "12:00am", 
+                    "1:00pm", 
+                    "2:00pm", 
+                    "3:00pm"];
 
-var alert_html = "\
-<div class='alert-item'>\
-    <div class='alert'>Alert</div>\
-    <div class='text'>{text}</div>\
-    <div class='x'>\
-        <svg preserveAspectRatio='xMinYMin meet' viewBox='0 0 12 12' height='15px' width='15px'>\
-            <g>\
-                <path d='M8.2,6l3.3-3.3c0.6-0.6,0.6-1.6,0-2.2s-1.6-0.6-2.2,0L6,3.8L2.7,0.5c-0.6-0.6-1.6-0.6-2.2,0s-0.6,1.6,0,2.2L3.8,6L0.5,9.3   c-0.6,0.6-0.6,1.6,0,2.2c0.6,0.6,1.6,0.6,2.2,0L6,8.2l3.3,3.3c0.6,0.6,1.6,0.6,2.2,0c0.6-0.6,0.6-1.6,0-2.2L8.2,6z'></path>\
-            </g>\
-        </svg>\
-    </div>\
-</div>";
 
-var new_member_html = "\
-<div class='new-member'>\
-    <div class='avatar-container'>\
-        <img src='{avatar_src}' class='avatar'>\
-    </div>\
-    <div class='name-email-container'>\
-        <div class='name'>{name}</div>\
-        <div class='email'><a href='mailto:{email}'>{email}</a></div>\
-    </div>\
-    <div class='date'>{date}</div>\
-</div>\
-";
+var daily_labels = ["Apr 3", 
+                    "Apr 4", 
+                    "Apr 5", 
+                    "Apr 6", 
+                    "Apr 7", 
+                    "Apr 8", 
+                    "Apr 9"];
 
-var recent_activity_html = "\
-<div class='event'>\
-    <div class='avatar-container'>\
-        <img src='{avatar_src}' class='avatar'>\
-    </div>\
-    <div class='event-container'>\
-        <span class='description'>{name} {action}</span>\
-        <span class='target'>{target}</span>\
-        <div class='time'>{time}</div>\
-    </div>\
-    <a href=''><i class='fa fa-chevron-right b-chevron'></i></a>\
-</div>\
-";
+var weekly_labels = ["Apr 3 - 9", 
+                    "Apr 10 - 16", 
+                    "Apr 17 - 23", 
+                    "Apr 24 - 30", 
+                    "May 1 - 7", 
+                    "May 8 - 14",
+                    "May 15 - 21"];
 
-var chart_data = {
-    labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
-    datasets: [
-        // {
-        //     label: "My First dataset",
-        //     fillColor: "rgba(220,220,220,0.2)",
-        //     strokeColor: "rgba(220,220,220,1)",
-        //     pointColor: "rgba(220,220,220,1)",
-        //     pointStrokeColor: "#fff",
-        //     pointHighlightFill: "#fff",
-        //     pointHighlightStroke: "rgba(220,220,220,1)",
-        //     data: [65, 59, 80, 81, 56, 55, 40]
-        // },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(116,121,189,0.2)",
-            strokeColor: "rgba(116,121,189,1)",
-            pointColor: "#fff",
-            pointStrokeColor: "rgba(116,121,189,1)",
-            pointHighlightFill: "rgba(116,121,189,1)",
-            pointHighlightStroke: "rgba(116,121,189,1)",
-            data: [500, 1000, 40, 19, 86, 27, 90, 11, 36, 39, 87]
+var monthly_labels = ["Apr", 
+                    "May", 
+                    "Jun", 
+                    "Jul", 
+                    "Aug", 
+                    "Sept", 
+                    "Oct"];
+
+
+Chart.defaults.global.responsive = true;
+
+function drawLineChart(labels, data, step_width) {
+    $("#lineChart").empty();
+    $("#lineChart").html('<canvas id="lineChart" height="100"><canvas>');
+    var ctx = $("#lineChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "",
+                    backgroundColor: "rgba(116, 121, 189, 0.2)",
+                    borderColor: "rgba(116, 121, 189, 1)",
+                    borderWidth: 1,
+                    pointBorderColor: "rgba(116, 121, 189, 1)",
+                    pointBorderWidth: 1.5,
+                    pointBackgroundColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: data
+                },
+            ]
+        },
+        options: {
+            bezierCurve : true,
+            // scaleOverride: true,
+            scaleStepWidth: step_width,
+            scaleStartValue: 0,
+            scaleSteps: 5,
+            maintainAspectRatio: true,
+            legend: {
+                display: false
+            }
         }
-    ]
-};
-
-function withCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    });
 }
 
-function prepare_newmember_html(member) {
-    var html_copy = new_member_html;
-    html_copy = html_copy.replace("{avatar_src}", member.avatar_src);
-    html_copy = html_copy.replace("{email}", member.email);
-    html_copy = html_copy.replace("{email}", member.email);
-    html_copy = html_copy.replace("{name}", member.name);
-    html_copy = html_copy.replace("{date}", member.date_joined);
-    return html_copy;
+function drawBarChart(labels, data) {
+    var ctx = $("#barChart");
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "",
+                    backgroundColor: "#7479BD",
+                    borderColor: "#7479BD",
+                    strokeColor: "#7479BD",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: data
+                },
+            ],
+        },
+        options: {
+            legend: {
+                display: false
+            }
+        }
+    });
 }
 
-function prepare_newevent_html(event) {
-    var html_copy = recent_activity_html;
-    html_copy = html_copy.replace("{name}", event.name);
-    html_copy = html_copy.replace("{avatar_src}", event.avatar_src);
-    html_copy = html_copy.replace("{action}", event.action);
-    html_copy = html_copy.replace("{target}", event.target);
-    html_copy = html_copy.replace("{time}", event.time);
-    return html_copy;
+function drawDoughnutChart(data) {
+    var ctx = $("#doughnutChart");
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Phones", "Tablets", "Desktop"],
+            datasets: [
+                {
+                    data: data,
+                    backgroundColor: [
+                        "#7479BD",
+                        "#83C991",
+                        "#76B2BE"
+                    ],
+                    hoverBackgroundColor: [
+                        "#7479BD",
+                        "#83C991",
+                        "#76B2BE"
+                    ]
+                }]
+        },
+        options: {
+            legend: {
+                position: "bottom",
+                labelsboxWidth: 25 // why isn't this working?
+            }
+        }
+    });
+    console.log(myDoughnutChart);
 }
 
-$(document).ready(function() {
-    var $avatar = $('#user_avatar');
-    $avatar.html('<img src="' + data.avatar_src + '" alt="avatar" class="avatar">');
-
-    var $name = $('#name');
-    $name.html(data.first_name + " " + data.last_name);
-
-    var $notifs = $('#notifs');
-
-    var $alert_container = $('#alert-container');
-    var alerts = "";
-    $.each(data.alerts, function(index, value) {
-        var copy = alert_html;
-        alerts += copy.replace("{text}", value);
+var app = angular.module('yourApp', []);
+app.controller('yourCtrl', function($scope, $http) {
+    $http.get('/mock/user_data.js', {}).then(function successCallback(response) {
+        $scope.user = response.data;
+        // Put in weekly chart as default //
+        drawLineChart(weekly_labels, $scope.user.data.weekly, 10);
+        // Draw daily traffic and mobile users charts
+        drawBarChart(daily_labels, $scope.user.data.daily);
+        drawDoughnutChart($scope.user.mobile_users);
+    }, function errorCallback(response) {
+        console.log(response);
     });
-    $alert_container.html(alerts);
-    $( ".x" ).each(function() {
-        $(this).on("click", function(){
-            $(this).parent().hide();
-        });
+});
+
+app.controller('chartToggle', function($scope) {
+    $labels = $('.toggle-label');
+    $floating_bg = $('.floating-bg');
+    $labels.click(function() {
+        $labels.removeClass('selected');
+        $(this).addClass('selected');
+        var index = $(this).attr("data-index");
+        var new_margin = "{}px".replace("{}", 85 * index);
+        $floating_bg.css('margin-left', new_margin);
+        if (index === "0") {
+            drawLineChart(hourly_labels, $scope.user.data.hourly, 2);
+        } else if (index === "1") {
+            drawLineChart(daily_labels, $scope.user.data.daily, 4);
+        } else if (index === "2") {
+            drawLineChart(weekly_labels, $scope.user.data.weekly, 10);
+        } else if (index === "3") {
+            drawLineChart(monthly_labels, $scope.user.data.monthly, 20);
+        }
     });
+});
 
+var $menu = $('.menu');
+var $side_nav = $('.side-nav');
+var $header = $('header');
+var $heading_container = $('.heading-container');
+var $x = $('.x');
+var $main = $('main');
 
-    var ctx = $("#myChart").get(0).getContext("2d");
-    var myLineChart = new Chart(ctx).Line(chart_data, {
-        bezierCurve: false,
-        pointDotStrokeWidth : 2,
-        datasetStrokeWidth : 1,
-        responsive: true,
-        maintainAspectRatio: false
-    });
+/* Toggle menu between hamburger and x */
 
-    var $twitter = $('#twitter');
-    $twitter.find('.social_number').html(withCommas(data.social_stats.twitter));
+$menu.click(function() {
+    console.log("hey");
+    $side_nav.toggleClass('show-nav');
+    $header.toggleClass('show-nav');
+    $menu.toggleClass('fa fa-times');
+    $menu.toggleClass('fa fa-bars');
+    $x.toggleClass('show-nav');
+    $heading_container.toggleClass('show-nav');
+    $main.toggleClass('show-nav');
+});
 
-    var $facebook = $('#facebook');
-    $facebook.find('.social_number').html(withCommas(data.social_stats.facebook));
+/* Make notifs dropdown appear on click */
 
-    var $google_plus = $('#google-plus');
-    $google_plus.find('.social_number').html(withCommas(data.social_stats.google_plus));
+var $notifs_container = $('.notifs-container');
+var $notifs_dropdown = $('.notifs-dropdown');
+$notifs_container.click(function() {
+    $notifs_dropdown.toggleClass('visible');
+    $notifs_container.removeClass('new');
+});
 
-    var $new_members = $('#newmembers-container');
-    var newmembers_html = '<div class="heading">New Members</div>';
-    for (var i = 0; i < data.new_members.length; i++) {
-        newmembers_html += prepare_newmember_html(data.new_members[i])
-    }
-    $new_members.html(newmembers_html);
+/* Hide alert div when x is clicked */
 
-    var $recent_activity = $('#recentactivity-container');
-    var event_html = '<div class="heading">Recent Activity</div>';
-    for (var i = 0; i < data.recent_activity.length; i++) {
-        event_html += prepare_newevent_html(data.recent_activity[i])
-    }
-    $recent_activity.html(event_html);
-
-    $.ajax({
-      url: 'https://randomuser.me/api/',
-      dataType: 'json',
-      success: function(data){
-        console.log(data);
-      }
-    });
+var $alertx = $('.alertx');
+$alertx.click(function() {
+    $(this).parent().hide();
 });
