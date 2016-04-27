@@ -118,17 +118,80 @@
           </div>
         </div>
       </div>
-      <div class="newmembers-container">
-        <h3 class="heading">New Members</h3>
+      <div class="fourth-row-container">
+        <div class="newmembers-container">
+          <h3 class="heading">New Members</h3>
+          <div class="member-container" data-ng-repeat="member in user.new_members">
+            <img class="avatar" data-ng-src="{{ member.avatar_src }}" src="#" alt="member avatar" width="40" height="40"/>
+            <div class="member">
+              <p class="name">{{ member.name }}</p>
+              <p class="email">
+                <a data-ng-href="mailto:{{ member.email }}" target="_top">{{ member.email }}</a>
+              </p>
+            </div>
+            <div class="date-joined">{{ member.date_joined }}</div>
+          </div>
+        </div>
+        <div class="recentactivity-container">
+          <h3 class="heading">Recent Activity</h3>
+            <div class="activity-container" data-ng-repeat="item in user.recent_activity">
+            <img class="avatar" data-ng-src="{{ item.avatar_src }}" src="#" alt="member avatar" width="40" height="40"/>
+            <div class="member">
+              <p class="event">
+                <span class="name">{{ item.name }} </span>
+                <span class="action">{{ item.action }} </span>
+                <span class="target">{{ item.target }}</span>
+              </p>
+              <p class="time">{{ item.time }}</p>
+            </div>
+            <div class="chevron">
+              <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="recentactivity-container">
-        <h3 class="heading">Recent Activity</h3>
-      </div>
-      <div class="messageuser-container">
-        <h3 class="heading">Message User</h3>
-      </div>
-      <div class="settings-container">
-        <h3 class="heading">Settings</h3>
+      <div class="fifth-row-container">
+        <div class="messageuser-container">
+          <h3 class="heading">Message User</h3>
+          <input type="text" placeholder="Search for User" name="user"/>
+          <textarea placeholder="Message for User" name="message"></textarea>
+          <button>Send</button>
+        </div>
+        <div class="settings-container">
+          <h3 class="heading">Settings</h3>
+          <form>
+            <div class="checkbox-container">
+              <label class="real-label" for="send-notifs">Send Email Notifications</label>
+              <div class="onoffswitch">
+                <input type="checkbox" name="send-notifs" class="onoffswitch-checkbox" id="send-notifs" checked>
+                <label class="onoffswitch-label" for="send-notifs">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+              </div>
+            </div>
+            <div class="checkbox-container">
+              <label class="real-label" for="set-public">Set Profile to Public</label>
+              <div class="onoffswitch">
+                  <input type="checkbox" name="set-public" class="onoffswitch-checkbox" id="set-public" checked>
+                  <label class="onoffswitch-label" for="set-public">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label>
+              </div>
+            </div>
+            <div class="styled-select">
+              <select>
+                <option value="" hidden>Select Label</option>
+                <option value="label1">Label 1</option>
+                <option value="label2">Label 2</option>
+                <option value="label3">Label 3</option>
+              </select>
+            </div>
+            <button id="save">Save</button>
+            <button id="cancel">Cancel</button>
+          </form>
+        </div>
       </div>
     </main>
   </body>

@@ -1,0 +1,15 @@
+/*** Button ***/
+
+button {
+    background: $color-light-purple;
+    border-radius: $spacing-border-radius;
+    padding: $spacing-half;
+    margin-bottom: 0;
+    border: none;
+    text-transform: uppercase;
+    color: $color-white;  
+    @include nice-hover;
+    &:active {
+        background: $color-dark-purple;
+    }  
+}

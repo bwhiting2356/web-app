@@ -1,7 +1,8 @@
 /**** INPUT STYLES ****/
 
-input {
-    padding: $spacing-half $spacing-one-third;
+input, 
+textarea {
+    padding: $spacing-half;
     border: $border-main;
     border-radius: 4px;
     color: $color-dark-grey;
@@ -22,4 +23,5 @@ input {
       color: $color-medium-grey;
       font-weight: 300;
     }
+    resize: none;
 }
