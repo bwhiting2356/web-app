@@ -83,7 +83,7 @@ function drawLineChart(labels, data, step_width) {
     });
 }
 
-function drawBarChart(labels, data1, data2) {
+function drawBarChart(labels, user, avg_user) {
     var ctx = $("#barChart");
     var myBarChart = new Chart(ctx, {
         type: 'bar',
@@ -98,17 +98,17 @@ function drawBarChart(labels, data1, data2) {
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: data1
+                    data: user
                 },
                 {
-                    label: "Average",
+                    label: "Average User",
                     backgroundColor: "#76B2BE",
                     strokeColor: "#76B2BE",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: data2
+                    data: avg_user
                 },
             ],
         },
