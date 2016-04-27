@@ -1,3 +1,12 @@
+String.prototype.supplant = function (o) {
+    return this.replace(/{([^{}]*)}/g,
+        function (a, b) {
+            var r = o[b];
+            return typeof r === 'string' || typeof r === 'number' ? r : a;
+        }
+    );
+};
+
 var hourly_labels = ["9:00am", 
                     "10:00am", 
                     "11:00am", 
@@ -132,6 +141,28 @@ function drawDoughnutChart(data) {
     });
 }
 
+function makeNameList(members) {
+    var list = [];
+    for (var i = 0; i < members.length; i++) {
+        var fullName = "{first} {last}".supplant(
+            {first: members[i].firstName, 
+            last: members[i].lastName})
+        list.push(fullName);
+    }
+    return list;
+}
+
+function findMatches(term, members) {
+    var results = [];  
+    var member_list = makeNameList(members);
+    for (var i = 0; i < member_list.length; i++) {
+        if (member_list[i].indexOf(term) !== -1) {
+            results.push(member_list[i]);
+        }
+    } 
+    return results;
+}
+
 var app = angular.module('yourApp', []);
 app.controller('yourCtrl', function($scope, $http) {
     $http.get('/mock/user_data.js', {}).then(function successCallback(response) {
@@ -144,9 +175,14 @@ app.controller('yourCtrl', function($scope, $http) {
     }, function errorCallback(response) {
         console.log(response);
     });
+
+    $scope.autoComplete = function() {
+        console.log(findMatches($scope.user_search, $scope.user.members));
+    }
 });
 
 app.controller('chartToggle', function($scope) {
+    console.log($scope);
     $labels = $('.toggle-label');
     $floating_bg = $('.floating-bg');
     $labels.click(function() {
@@ -166,6 +202,14 @@ app.controller('chartToggle', function($scope) {
         }
     });
 });
+
+// app.controller('messageUser', function($scope) {
+//     console.log($scope.$parent.user);
+//     $scope.counter = 0;
+//     $scope.change = function() {
+//         console.log("hey");
+//     };
+// });
 
 $(document).ready(function() {
     var $menu = $('.menu');
@@ -202,4 +246,7 @@ $(document).ready(function() {
     $alertx.click(function() {
         $(this).parent().hide();
     });
+
+    var $a = $('#user-search');
+    console.log($a);
 });

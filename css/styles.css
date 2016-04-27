@@ -914,6 +914,12 @@ h2 {
   .messageuser-container textarea {
     height: 75px; }
 
+.input-wrapper {
+  position: relative; }
+
+.suggested_users {
+  position: absolute; }
+
 /**** Settings Container ****/
 .settings-container {
   display: inline-block;

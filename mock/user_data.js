@@ -1,7 +1,7 @@
 {
     "firstName": "Brendan",
     "lastName": "Whiting",
-    "avatar": "http://lorempixel.com/40/40/",
+    "avatar_src": "http://lorempixel.com/40/40/",
     "alert": {"text": "Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor."},
     "notifs": [
             {"text": "JJ invited you to Showshoe Party"}, 
@@ -15,44 +15,46 @@
     },
     "mobile_users": [300, 50, 100],
     "social_stats": {"twitter": 10345, "facebook": 8739, "google_plus": 2530},
-    "new_members": [
-        {"name": "Victoria Chambers",
+    "members": [
+        {"firstName": "Victoria",
+        "lastName": "Chambers",
         "email": "victoria.chambers80@example.com",
         "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/47/47/"},
-        {"name": "Dale Byrd",
+        "avatar_src": "http://lorempixel.com/47/47/", 
+        "recent_activity": {
+            "action": "commented on",
+            "target": "YourApp's SEO Tips",
+            "time": "4 hours"}
+        },
+        {"firstName": "Dale",
+        "lastName": "Byrd",
         "email": "dale.bird52@example.com",
         "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/46/46/"},
-        {"name": "Dawn Wood",
+        "avatar_src": "http://lorempixel.com/46/46/",
+        "recent_activity": {
+            "action": "liked the post",
+            "target": "Facebook's Changes for 2016",
+            "time": "5 hours"}
+        },
+        {"firstName": "Dawn",
+        "lastName": "Wood",
         "email": "dawn.wood16@example.com",
         "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/48/48/"},
-        {"name": "Dan Oliver",
+        "avatar_src": "http://lorempixel.com/48/48/",
+        "recent_activity": {
+            "action": "commented on",
+            "target": "Facebook's Changes for 2016",
+            "time": "5 hours"}
+        },
+        {"firstName": "Dan",
+        "lastName": "Oliver",
         "email": "dan.oliver82@example.com",
         "date_joined": "10/15/15",
-        "avatar_src": "http://lorempixel.com/49/49/"}
-    ],
-    "recent_activity": [
-        {"name": "Victoria Chambers",
-        "avatar_src": "http://lorempixel.com/47/47/",
-        "action": "commented on",
-        "target": "YourApp's SEO Tips",
-        "time": "4 hours ago"},
-        {"name": "Dale Byrd",
-        "action": "liked the post",
-        "target": "Facebook's Changes for 2016",
-        "avatar_src": "http://lorempixel.com/46/46/",
-        "time": "5 hours ago"},
-        {"name": "Dawn Wood",
-        "avatar_src": "http://lorempixel.com/48/48/",
-        "action": "commented on",
-        "target": "Facebook's Changes for 2016",
-        "time": "5 hours ago"},
-        {"name": "Dan Oliver",
         "avatar_src": "http://lorempixel.com/49/49/",
-        "action": "posted",
-        "target": "YourApp's SEO Tips",
-        "time": "1 day ago"}
+        "recent_activity": {
+            "action": "posted",
+            "target": "YourApp's SEO Tips",
+            "time": "1 day"}
+        }
     ]
 }

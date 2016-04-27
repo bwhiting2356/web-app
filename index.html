@@ -38,7 +38,7 @@
               </svg>
           </div>
           <div class="blue-line"></div>
-          <img class="avatar" width="40" height="40" data-ng-src="{{ user.avatar }}" alt="user avatar" src="#"/>
+          <img class="avatar" width="40" height="40" data-ng-src="{{ user.avatar_src }}" alt="user avatar" src="#"/>
           <div class="name">{{ user.firstName + " " + user.lastName }}</div>
       </div>
     </header>
@@ -121,10 +121,10 @@
       <div class="fourth-row-container">
         <div class="newmembers-container">
           <h3 class="heading">New Members</h3>
-          <div class="member-container" data-ng-repeat="member in user.new_members">
+          <div class="member-container" data-ng-repeat="member in user.members">
             <img class="avatar" data-ng-src="{{ member.avatar_src }}" src="#" alt="member avatar" width="40" height="40"/>
             <div class="member">
-              <p class="name">{{ member.name }}</p>
+              <p class="name">{{ member.firstName }} {{ member.lastName }}</p>
               <p class="email">
                 <a data-ng-href="mailto:{{ member.email }}" target="_top">{{ member.email }}</a>
               </p>
@@ -134,15 +134,15 @@
         </div>
         <div class="recentactivity-container">
           <h3 class="heading">Recent Activity</h3>
-            <div class="activity-container" data-ng-repeat="item in user.recent_activity">
-            <img class="avatar" data-ng-src="{{ item.avatar_src }}" src="#" alt="member avatar" width="40" height="40"/>
+            <div class="activity-container" data-ng-repeat="member in user.members">
+            <img class="avatar" data-ng-src="{{ member.avatar_src }}" src="#" alt="member avatar" width="40" height="40"/>
             <div class="member">
               <p class="event">
-                <span class="name">{{ item.name }} </span>
-                <span class="action">{{ item.action }} </span>
-                <span class="target">{{ item.target }}</span>
+                <span class="name">{{ member.firstName}} {{ member.lastName }} </span>
+                <span class="action">{{ member.recent_activity.action }} </span>
+                <span class="target">{{ member.recent_activity.target }}</span>
               </p>
-              <p class="time">{{ item.time }}</p>
+              <p class="time">{{ member.recent_activity.time }} ago</p>
             </div>
             <div class="chevron">
               <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
@@ -153,9 +153,14 @@
       <div class="fifth-row-container">
         <div class="messageuser-container">
           <h3 class="heading">Message User</h3>
-          <input type="text" placeholder="Search for User" name="user"/>
-          <textarea placeholder="Message for User" name="message"></textarea>
-          <button>Send</button>
+          <form>
+            <div class="search-wrapper">
+              <input data-ng-model="user_search" data-ng-change="autoComplete()" id="user-search" type="text" placeholder="Search for User" name="user"/>
+              <div class="suggested_users"></div>
+            </div>
+            <textarea placeholder="Message for User" name="message"></textarea>
+            <button>Send</button>
+          </form>
         </div>
         <div class="settings-container">
           <h3 class="heading">Settings</h3>
@@ -182,10 +187,10 @@
             </div>
             <div class="styled-select">
               <select>
-                <option value="" hidden>Select Label</option>
-                <option value="label1">Label 1</option>
-                <option value="label2">Label 2</option>
-                <option value="label3">Label 3</option>
+                <option value="" hidden>Select Timezone</option>
+                <option value="label1">Pacific</option>
+                <option value="label2">Central</option>
+                <option value="label3">Newfoundland</option>
               </select>
             </div>
             <button id="save">Save</button>
