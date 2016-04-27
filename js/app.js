@@ -83,7 +83,7 @@ function drawLineChart(labels, data, step_width) {
     });
 }
 
-function drawBarChart(labels, data) {
+function drawBarChart(labels, data1, data2) {
     var ctx = $("#barChart");
     var myBarChart = new Chart(ctx, {
         type: 'bar',
@@ -91,21 +91,31 @@ function drawBarChart(labels, data) {
             labels: labels,
             datasets: [
                 {
-                    label: "",
+                    label: "You",
                     backgroundColor: "#7479BD",
-                    borderColor: "#7479BD",
                     strokeColor: "#7479BD",
                     pointColor: "rgba(220,220,220,1)",
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: data
+                    data: data1
+                },
+                {
+                    label: "Average",
+                    backgroundColor: "#76B2BE",
+                    strokeColor: "#76B2BE",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: data2
                 },
             ],
         },
         options: {
             legend: {
-                display: false
+                position: "top",
+                labelsboxWidth: 25 // why isn't this working?
             }
         }
     });
@@ -116,19 +126,21 @@ function drawDoughnutChart(data) {
     var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ["Phones", "Tablets", "Desktop"],
+            labels: ["Phones", "Tablets", "Desktop", "Magic"],
             datasets: [
                 {
                     data: data,
                     backgroundColor: [
                         "#7479BD",
                         "#83C991",
-                        "#76B2BE"
+                        "#76B2BE",
+                        "#ff8080"
                     ],
                     hoverBackgroundColor: [
                         "#7479BD",
                         "#83C991",
-                        "#76B2BE"
+                        "#76B2BE",
+                        "#ff8080"
                     ]
                 }]
         },
@@ -146,7 +158,7 @@ function makeNameList(members) {
     for (var i = 0; i < members.length; i++) {
         var fullName = "{first} {last}".supplant(
             {first: members[i].firstName, 
-            last: members[i].lastName})
+            last: members[i].lastName});
         list.push(fullName);
     }
     return list;
@@ -156,7 +168,7 @@ function findMatches(term, members) {
     var results = [];  
     var member_list = makeNameList(members);
     for (var i = 0; i < member_list.length; i++) {
-        if (member_list[i].indexOf(term) !== -1) {
+        if ((member_list[i].toLowerCase().indexOf(term.toLowerCase()) !== -1) && (term !== ""))  {
             results.push(member_list[i]);
         }
     } 
@@ -170,19 +182,83 @@ app.controller('yourCtrl', function($scope, $http) {
         // Put in weekly chart as default //
         drawLineChart(weekly_labels, $scope.user.data.weekly, 10);
         // Draw daily traffic and mobile users charts
-        drawBarChart(daily_labels, $scope.user.data.daily);
+        drawBarChart(daily_labels, $scope.user.data.daily, $scope.user.data.daily_avg);
         drawDoughnutChart($scope.user.mobile_users);
     }, function errorCallback(response) {
         console.log(response);
     });
 
     $scope.autoComplete = function() {
-        console.log(findMatches($scope.user_search, $scope.user.members));
-    }
+        $scope.user.suggested_users = findMatches($scope.message.recipient, $scope.user.members);
+    };
+
+    $scope.choose = function(user) {
+        $scope.message.recipient = user;
+        $scope.user.suggested_users = [];
+    };
+
+    $scope.submit = function() {
+        if ((angular.isUndefined($scope.message)) || 
+            (angular.isUndefined($scope.message.text) || $scope.message.text === "") && 
+            (angular.isUndefined($scope.message.recipient) || $scope.message.recipient === "")) {
+            $('.status').removeClass('success').addClass('error');
+            $scope.status = "You need to fill out both fields.";
+            console.log($scope.message);
+        } else if (angular.isUndefined($scope.message.text) || $scope.message.text === "") {
+            $('.status').removeClass('success').addClass('error');
+            $scope.status = "You need to say something in your message.";
+        } else if (angular.isUndefined($scope.message.recipient) || $scope.message.recipent === "") {
+            $('.status').removeClass('success').addClass('error');
+            $scope.status = "Your message needs a recipient.";
+        } else {
+            $('.status').removeClass('error').addClass('success');
+            $scope.status = "Your message was sent successfully.";
+            delete $scope.message; // message was deleted but in real life will be sent to the server
+        }
+    };
+
+    $scope.reset = function() {
+        if (localStorage.saved !== "true") {
+            // set default settings
+            $scope.settings = {
+                "public": true,
+                "email_notifs": true
+            };
+        } else {
+            $scope.settings = {
+                "public": localStorage.public,
+                "email_notifs": localStorage.email_notifs,
+                "time_zone": localStorage.time_zone
+            };
+
+            if ($scope.settings.public === "true") {
+                $scope.settings.public = true;
+            } else if ($scope.settings.public === "false") {
+                $scope.settings.public = false;
+            }
+
+            if ($scope.settings.email_notifs === "true") {
+                $scope.settings.email_notifs = true;
+            } else if ($scope.settings.email_notifs === "false") {
+                $scope.settings.email_notifs = false;
+            }
+        }
+        $scope.saved_message = "";
+    };
+
+    $scope.reset();
+
+    $scope.saveSettings = function(settings) {
+        localStorage.setItem("saved", "true");
+        localStorage.setItem("email_notifs", settings.email_notifs);
+        localStorage.setItem("public", settings.public);
+        localStorage.setItem("time_zone", settings.time_zone);
+        $scope.saved_message = "Your settings are saved.";
+    };
+
 });
 
 app.controller('chartToggle', function($scope) {
-    console.log($scope);
     $labels = $('.toggle-label');
     $floating_bg = $('.floating-bg');
     $labels.click(function() {
@@ -202,14 +278,6 @@ app.controller('chartToggle', function($scope) {
         }
     });
 });
-
-// app.controller('messageUser', function($scope) {
-//     console.log($scope.$parent.user);
-//     $scope.counter = 0;
-//     $scope.change = function() {
-//         console.log("hey");
-//     };
-// });
 
 $(document).ready(function() {
     var $menu = $('.menu');
@@ -246,7 +314,4 @@ $(document).ready(function() {
     $alertx.click(function() {
         $(this).parent().hide();
     });
-
-    var $a = $('#user-search');
-    console.log($a);
 });

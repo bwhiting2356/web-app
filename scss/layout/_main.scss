@@ -163,6 +163,7 @@ h2 {
     border-top: $border-main;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 
     .heading {
         width: 100%;
@@ -174,26 +175,39 @@ h2 {
         border: $border-main;
         border-radius: $spacing-border-radius;
         padding: $spacing-half;
-        box-sizing: border-box;
-        width: 80%;
-        max-width: 320px;
-        margin: 0 auto $spacing-default auto;
-        display: block;
-    }
-
-    @media screen and (min-width: 692px) {
-
-
-        .social {
-            width: 30%;
-            flex-grow: 1;
-            margin-right: $spacing-default;
-            &:nth-child(4) {
-                margin-right: 0;
-            }
+        width: 220px;
+        margin: 0 $spacing-half $spacing-default $spacing-half;
+        display: block; 
+        position: relative;
+        i {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            color: white;
+            font-size: 2.2em;
         }
-
     }
+
+    #pictastic {
+        i {
+            margin-top: 4px;
+            margin-left: -2px;
+        }
+    }
+
+    // @media screen and (min-width: 692px) {
+
+
+    //     .social {
+    //         width: 30%;
+    //         flex-grow: 1;
+    //         margin-right: $spacing-default;
+    //         &:nth-child(4) {
+    //             margin-right: 0;
+    //         }
+    //     }
+
+    // }
 }
 
 .custom-icon {
@@ -377,13 +391,37 @@ h2 {
     }
 }
 
-.input-wrapper {
+.search-wrapper {
     position: relative; 
+    margin: 0;
 }
 
 .suggested_users {
     position: absolute;
+    top: $spacing-default * 2;
 }
+
+.suggested_user {
+    color: $color-dark-grey;
+    background: $color-light-grey;
+    padding: ($spacing-half / 2) $spacing-half;
+    margin: 0;
+    border: $border-main;
+    cursor: pointer;
+    transition: background .2s ease;
+    &:hover {
+        background: darken($color-light-grey, 10%); 
+    }
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
 
 /**** Settings Container ****/
 
@@ -471,14 +509,6 @@ h2 {
 .settings-buttons {
     text-align: center;
 }
-
-// #timezone {
-//     width: 90%;
-//     padding: 12px 2px;
-//     border-radius: 5px;
-//     margin: 20px auto;
-//     border: 2px solid $color-light-grey;
-// }
 
 #save {
     width: calc(50% - #{$spacing-half});
@@ -574,4 +604,9 @@ h2 {
 .icon-credit {
     font-size: 10px;
     margin: 10px;
+}
+
+.saved {
+    margin-top: 25px;
+    color: green;   
 }

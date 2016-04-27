@@ -9,12 +9,19 @@
             ],
     "data": {
         "hourly": [1, 4, 3, 5, 7, 6, 8],
-        "daily": [5, 8, 7, 16, 8, 14, 15],
+        "daily": [7, 8, 7, 16, 8, 14, 15],
+        "daily_avg": [9, 8, 9, 7, 8, 9, 17, 18],
         "weekly": [22, 25, 26, 27, 21, 19, 20],
         "monthly": [89, 76, 73, 81, 89, 90, 91]
     },
-    "mobile_users": [300, 50, 100],
-    "social_stats": {"twitter": 10345, "facebook": 8739, "google_plus": 2530},
+    "mobile_users": [300, 50, 100, 29],
+    "social_stats": {
+        "twitter": 10345, 
+        "facebook": 8739, 
+        "google_plus": 2530,
+        "pictastic": 4229,
+        "chem_buddies": 8920
+    },
     "members": [
         {"firstName": "Victoria",
         "lastName": "Chambers",

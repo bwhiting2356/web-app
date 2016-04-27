@@ -752,7 +752,8 @@ h2 {
   padding: 25px;
   border-top: 1px solid #c2c2c2;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: space-around; }
   .socialstats-container .heading {
     width: 100%; }
   .socialstats-container .social {
@@ -761,18 +762,19 @@ h2 {
     border: 1px solid #c2c2c2;
     border-radius: 4px;
     padding: 12.5px;
-    box-sizing: border-box;
-    width: 80%;
-    max-width: 320px;
-    margin: 0 auto 25px auto;
-    display: block; }
-  @media screen and (min-width: 692px) {
-    .socialstats-container .social {
-      width: 30%;
-      flex-grow: 1;
-      margin-right: 25px; }
-      .socialstats-container .social:nth-child(4) {
-        margin-right: 0; } }
+    width: 220px;
+    margin: 0 12.5px 25px 12.5px;
+    display: block;
+    position: relative; }
+    .socialstats-container .social i {
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      color: white;
+      font-size: 2.2em; }
+  .socialstats-container #pictastic i {
+    margin-top: 4px;
+    margin-left: -2px; }
 
 .custom-icon {
   margin-top: 4px;
@@ -914,11 +916,30 @@ h2 {
   .messageuser-container textarea {
     height: 75px; }
 
-.input-wrapper {
-  position: relative; }
+.search-wrapper {
+  position: relative;
+  margin: 0; }
 
 .suggested_users {
-  position: absolute; }
+  position: absolute;
+  top: 50px; }
+
+.suggested_user {
+  color: #676666;
+  background: #FBFBFB;
+  padding: 6.25px 12.5px;
+  margin: 0;
+  border: 1px solid #c2c2c2;
+  cursor: pointer;
+  transition: background .2s ease; }
+  .suggested_user:hover {
+    background: #e2e2e2; }
+
+.error {
+  color: red; }
+
+.success {
+  color: green; }
 
 /**** Settings Container ****/
 .settings-container {
@@ -1088,6 +1109,10 @@ h2 {
 .icon-credit {
   font-size: 10px;
   margin: 10px; }
+
+.saved {
+  margin-top: 25px;
+  color: green; }
 
 * {
   font-family: Open Sans, sans-serif; }
