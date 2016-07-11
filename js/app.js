@@ -177,7 +177,7 @@ function findMatches(term, members) {
 
 var app = angular.module('yourApp', []);
 app.controller('yourCtrl', function($scope, $http) {
-    $http.get('/mock/user_data.js', {}).then(function successCallback(response) {
+    $http.get('./mock/user_data.js', {}).then(function successCallback(response) {
         $scope.user = response.data;
         // Put in weekly chart as default //
         drawLineChart(weekly_labels, $scope.user.data.weekly, 10);
